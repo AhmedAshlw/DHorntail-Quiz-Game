@@ -1,0 +1,9 @@
+<nav>
+  <a href="/" class="btn">Home</a>
+  <% if(user) { %>
+    <a href="/auth/sign-out" class="btn">Sign Out</a>
+    <% } else { %>
+      <a href="/auth/sign-in" class="btn">Sign In</a>
+      <a href="/auth/sign-up" class="btn">Sign Up</a>
+      <% } %>
+</nav>
