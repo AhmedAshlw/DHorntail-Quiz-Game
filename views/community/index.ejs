@@ -1,0 +1,14 @@
+<%- include('../partials/boilerplate.ejs') %>
+
+    <title>Community Page</title>
+    </head>
+
+    <body>
+        <%- include('../partials/_navbar.ejs') %>
+            <h1>Community Page</h1>
+            <form class="createBtn" action="/users/<%= user._id %>/quizzes/?_method=GET" method="GET">
+                <button type="submit">Create</button>
+            </form>
+    </body>
+
+    </html>

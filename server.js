@@ -14,6 +14,8 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 
 // CONTROLLERS
 const authController = require("./controllers/auth.js");
+const CommunityController = require("./controllers/community.js");
+const quizzesController = require("./controllers/quizzes.js");
 
 const port = process.env.PORT ? process.env.PORT : "3000";
 
@@ -38,12 +40,18 @@ app.use(
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(passUserToView);
-app.get("/", (req, res, next) => {
-  res.render("index.ejs");
+app.get("/", (req, res) => {
+  if (req.session.user) {
+    res.redirect(`/users/${req.session.user._id}/community`);
+  } else {
+    res.render("index.ejs");
+  }
 });
 
 app.use("/auth", authController);
 app.use(isSignedIn);
+app.use("/users/:userId/community", CommunityController);
+app.use("/users/:userId/quizzes", quizzesController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

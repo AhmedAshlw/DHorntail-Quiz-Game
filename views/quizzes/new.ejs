@@ -1,0 +1,19 @@
+<%- include('../partials/boilerplate.ejs') %>
+
+    <title>New Quiz</title>
+    </head>
+
+    <body>
+        <%- include('../partials/_navbar.ejs') %>
+            <h1>New Quiz Page</h1>
+            <form class="newQuiz" action="/users/<%= user._id %>/quizzes" method="POST">
+                <div>
+                    <label for="name">Quiz Name</label>
+                    <input type="text" name="name" id="name">
+                </div>
+
+                <button type="submit">Add Quiz</button>
+            </form>
+    </body>
+
+    </html>
